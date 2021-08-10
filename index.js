@@ -1,6 +1,6 @@
 import express from 'express' //importar express
-import { conectar, agregarContacto, obtenerContactos } from './src/mysql_conector.js' //importar conector mysql
-
+import { conectar, agregarContacto, obtenerContactos, borrarContacto } from './src/mysql_conector.js' //importar conector mysql
+let todosContactos
 const app = express() //iniciar express
 
 //iniciar servidor
@@ -23,7 +23,7 @@ app.use(express.static('./css'))
 app.get('/', function(req, res){
     /* res.send('app iniciada') */
     /*conectar()*/
-    const todosContactos = obtenerContactos()
+    todosContactos = obtenerContactos()
     res.render('index', {titulo: 'App node', contactos: todosContactos})
 })
 
@@ -38,6 +38,6 @@ app.get('/agregar/:nombre/:numero', function(req, res){
 
 app.get('/borrar/:id', function(req, res){
     let id = req.params.id
-    console.log("id:",id)
+    borrarContacto(id)
     res.redirect('/')
 })

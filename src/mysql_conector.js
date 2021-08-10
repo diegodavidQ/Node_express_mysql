@@ -1,7 +1,7 @@
 //importar mysql
 import mysql from 'mysql'
 
-var todos
+let todos
 //crear conexión 
 const conector = mysql.createConnection(
     {
@@ -36,6 +36,11 @@ const obtenerContactos = () => {
     return todos
 }
 
+const borrarContacto = (id) => {
+    const sql = `DELETE FROM agend WHERE id_agenda=${id}`
+    conector.query(sql)
+}
 
-export{conectar, agregarContacto, obtenerContactos}
+
+export{conectar, agregarContacto, obtenerContactos, borrarContacto}
 
