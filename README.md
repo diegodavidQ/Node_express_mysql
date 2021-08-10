@@ -1,9 +1,6 @@
 Node Express Mysql
 
-<p align="center">
-	<video src="video/Node_express_mysql.mkv" width="500">
-</p>
 
-<video width="640"  autoplay>
-  <source src="video/Node_express_mysql.mkv" type="video/mkv">
-</video>
+<p align="center">
+	<img src="screenshot/Node_express_mysql.gif" width="570">
+</p>
