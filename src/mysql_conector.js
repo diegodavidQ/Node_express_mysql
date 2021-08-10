@@ -1,6 +1,7 @@
 //importar mysql
 import mysql from 'mysql'
 
+var todos
 //crear conexión 
 const conector = mysql.createConnection(
     {
@@ -18,5 +19,23 @@ const conectar = () => {
     })
 }
 
+const agregarContacto = (nombre, numero) => {
+    const sql = `INSERT INTO agend (id_agenda, nombre, numero) VALUES (${null}, "${nombre}", ${numero})`
+    conector.query(sql, function(err, result, filed){
+        if(err) throw err
+        console.log(result)
+    })
+}
 
+
+const obtenerContactos = () => {
+    const sql = 'SELECT * FROM agend'
+    conector.query(sql, function(err, result, field){
+        todos = result
+    })
+    return todos
+}
+
+
+export{conectar, agregarContacto, obtenerContactos}
 
